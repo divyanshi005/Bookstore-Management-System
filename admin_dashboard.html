@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+    {% include "admin/add_book.html" %}
+    {% include "admin/view_customers.html" %}
+    {% include "admin/search_books.html" %}
+    {% include "admin/transaction_history.html" %}
+{% endblock %}

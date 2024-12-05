@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Books</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Search Books</h2>
+    <form method="POST" action="/admin/dashboard/search_books">
+        <label for="query_param">Search By:</label>
+        <select id="query_param" name="query_param" required>
+            <option value="title">Title</option>
+            <option value="genre">Genre</option>
+        </select><br><br>
+        
+        <label for="value">Search Term:</label>
+        <input type="text" id="value" name="value" required><br><br>
+        
+        <input type="submit" value="Search">
+    </form>
+
+    {% if books %}
+        <h3>Search Results:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Bought</th>
+                    <th>Reviews</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book['title'] }}</td>
+                        <td>{{ book['author'] }}</td>
+                        <td>{{ book['genre'] }}</td>
+                        <td>{{ book['price'] }}</td>
+                        <td>{{ book['deleted'] }}</td>
+                        <td>
+                            {% if book['reviews'] %}
+                                <ul>
+                                    {% for review in book['reviews'] %}
+                                        <li>{{ review }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                No reviews available
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+    {% else %}
+        {% if request.method == 'POST' %}
+            <p>No books found for the specified search criteria.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

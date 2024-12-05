@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h3 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h3>Transaction Records:</h3>
+    {% if transactions %}
+        <ul>
+            {% for record in transactions %}
+                <li>
+                    <strong>Transaction ID:</strong> {{ record['transaction_id'] }}<br>
+                    <strong>Book Title:</strong> {{ record['book_name'] }}<br>
+                    <strong>Customer Name:</strong> {{ record['customer_name'] }}<br>
+                    <strong>Purchase Date:</strong> {{ record['purchase_date'] }}<br>
+                    <strong>Price:</strong> {{ record['price'] }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No transaction history available.</p>
+    {% endif %}
+</body>
+</html>
