@@ -1,0 +1,8 @@
+{% extends "customer/base.html" %}
+{% block title %}Customer Dashboard{% endblock %}
+{% block content %}
+    {% include "customer/buy_books.html" %}
+    {% include "customer/add_review.html" %}
+    {% include "customer/customer_search_books.html" %}
+    {% include "customer/transaction_history.html" %}
+{% endblock %}

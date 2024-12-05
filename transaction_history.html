@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction History</title>
+</head>
+<body>
+    <div id="transactionHistory" class="section">
+        <h3>Transaction History</h3>
+        <form method="POST" action="/customer/transaction_history">
+            <label for="customer_id">Enter Customer ID:</label><br>
+            <input type="text" id="customer_id" name="customer_id" required><br><br>
+            <input type="submit" value="View Transactions">
+        </form>
+
+        {% if transactions %}
+            <h4>Your Transactions:</h4>
+            <ul>
+                {% for transaction in transactions %}
+                    <li>
+                        <strong>Transaction ID:</strong> {{ transaction['transaction_id'] }}<br>
+                        <strong>Book Title:</strong> {{ transaction['title'] }}<br>
+                        <strong>Purchase Date:</strong> {{ transaction['purchase_date'] }}<br>
+                        <strong>Price:</strong> {{ transaction['price'] }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No transactions found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

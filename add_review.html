@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Review</title>
+</head>
+<body>
+    <h3>Add a Review</h3>
+    <form method="POST" action="/customer/add_review">
+        <label for="book_name">Book Name:</label><br>
+        <input type="text" id="book_name" name="book_name" required><br><br>
+        <label for="review">Your Review:</label><br>
+        <textarea id="review" name="review" required></textarea><br><br>
+        <input type="submit" value="Submit Review">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

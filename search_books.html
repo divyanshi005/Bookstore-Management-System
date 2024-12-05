@@ -1,0 +1,13 @@
+<div id="searchBooks" class="section">
+    <h3>Search Books</h3>
+    <form method="POST" action="/customer/dashboard/search_books">
+        <label for="query_param">Search By:</label><br>
+        <select id="query_param" name="query_param">
+            <option value="title">Title</option>
+            <option value="genre">Genre</option>
+        </select><br><br>
+        <label for="value">Search Term:</label><br>
+        <input type="text" id="value" name="value" required><br><br>
+        <input type="submit" value="Search">
+    </form>
+</div>

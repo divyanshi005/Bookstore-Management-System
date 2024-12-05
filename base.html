@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Dashboard</title>
+    <style>
+        /* General layout and styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+        h2 {
+            color: #343a40;
+            padding: 20px 0;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #ffffff;
+            margin: 0;
+        }
+        p {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        /* Link button styling */
+        .nav-button {
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to the Customer Dashboard</h2>
+    <p>Select an action:</p>
+
+    <a href="{{ url_for('buy_books') }}" class="nav-button">Buy Books</a>
+    <a href="{{ url_for('add_review') }}" class="nav-button">Add a Review</a>
+    <a href="{{ url_for('search_books') }}" class="nav-button">Search Books</a>
+    <a href="{{ url_for('customer_transaction_history') }}" class="nav-button">View Transaction History</a>
+
+</body>
+</html>
