@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Books</title>
+</head>
+<body>
+    <h2>Search for a Book</h2>
+    <form method="POST" action="/customer/customer_search_books">
+        <label for="book_name">Book Name:</label>
+        <input type="text" id="book_name" name="book_name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if book %}
+        <h3>Book Details:</h3>
+        <p><strong>Title:</strong> {{ book['title'] }}</p>
+        <p><strong>Author:</strong> {{ book['author'] }}</p>
+        <p><strong>Genre:</strong> {{ book['genre'] }}</p>
+        <p><strong>Price:</strong> {{ book['price'] }}</p>
+        <h3>Reviews:</h3>
+        {% if reviews %}
+            <ul>
+                {% for review in reviews %}
+                    <li>{{ review['review'] }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No reviews available for this book.</p>
+        {% endif %}
+    {% elif search %}
+        <p>No book found with the name "{{ search }}"</p>
+    {% endif %}
+</body>
+</html>
